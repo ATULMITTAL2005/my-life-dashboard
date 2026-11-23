@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { api, clearToken, getToken, setToken } from '../lib/api';
+import { applyTheme } from '../lib/theme';
 
 const AuthContext = createContext(null);
 
@@ -41,6 +42,12 @@ export function AuthProvider({ children }) {
     window.addEventListener('mld:unauthorized', onUnauthorized);
     return () => window.removeEventListener('mld:unauthorized', onUnauthorized);
   }, []);
+
+  useEffect(() => {
+    if (user?.preferences?.theme) {
+      applyTheme(user.preferences.theme);
+    }
+  }, [user?.preferences?.theme]);
 
   const login = useCallback(async (email, password) => {
     const data = await api('/auth/login', { method: 'POST', body: { email, password } });

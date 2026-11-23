@@ -5,6 +5,8 @@ import { useToast } from '../context/ToastContext';
 import { BrandMark, Icon } from './Icons';
 import { Avatar, IconButton } from './ui';
 import { formatLongToday, initials } from '../lib/format';
+import { applyTheme, getTheme, toggleTheme } from '../lib/theme';
+import { api } from '../lib/api';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', icon: 'grid', end: true },
@@ -15,7 +17,7 @@ const NAV_ITEMS = [
   { to: '/account', label: 'Account', icon: 'user' },
 ];
 
-function SidebarContent({ onNavigate }) {
+function SidebarContent({ onNavigate, theme, onThemeToggle }) {
   const { user, logout } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
@@ -92,6 +94,12 @@ function SidebarContent({ onNavigate }) {
           </span>
           <Icon name="chevronRight" size={16} />
         </NavLink>
+        <IconButton
+          label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          icon={theme === 'dark' ? 'sun' : 'moon'}
+          size="sm"
+          onClick={onThemeToggle}
+        />
         <IconButton label="Sign out" icon="logout" size="sm" onClick={handleLogout} />
       </div>
     </>
@@ -100,13 +108,35 @@ function SidebarContent({ onNavigate }) {
 
 export default function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { user } = useAuth();
+  const [theme, setThemeState] = useState(getTheme);
+  const { user, updateUser } = useAuth();
   const location = useLocation();
+
+  const handleThemeToggle = async () => {
+    const next = toggleTheme();
+    setThemeState(next);
+    applyTheme(next);
+    if (user) {
+      try {
+        const response = await api('/auth/preferences', { method: 'PATCH', body: { theme: next } });
+        updateUser(response.user);
+      } catch {
+        /* keep local preference even if sync fails */
+      }
+    }
+  };
   const mainRef = useRef(null);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (user?.preferences?.theme) {
+      applyTheme(user.preferences.theme);
+      setThemeState(user.preferences.theme);
+    }
+  }, [user?.preferences?.theme]);
 
   useEffect(() => {
     mainRef.current?.focus({ preventScroll: true });
@@ -133,7 +163,11 @@ export default function AppLayout() {
       </a>
 
       <aside id="sidebar" className={`sidebar ${mobileOpen ? 'is-open' : ''}`}>
-        <SidebarContent onNavigate={() => setMobileOpen(false)} />
+        <SidebarContent
+          onNavigate={() => setMobileOpen(false)}
+          theme={theme}
+          onThemeToggle={handleThemeToggle}
+        />
       </aside>
 
       {mobileOpen ? (

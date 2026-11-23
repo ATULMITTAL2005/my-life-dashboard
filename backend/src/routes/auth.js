@@ -52,6 +52,7 @@ const preferencesSchema = z.object({
     .max(DASHBOARD_CARDS.length, 'Unknown dashboard card.')
     .optional(),
   currency: z.enum(['INR', 'USD', 'EUR', 'GBP']).optional(),
+  theme: z.enum(['light', 'dark']).optional(),
 });
 
 // POST /api/auth/register
@@ -136,11 +137,12 @@ router.put('/password', requireAuth, validate(passwordChangeSchema), async (req,
 // PATCH /api/auth/preferences
 router.patch('/preferences', requireAuth, validate(preferencesSchema), async (req, res, next) => {
   try {
-    const { dashboardCards, currency } = req.body;
+    const { dashboardCards, currency, theme } = req.body;
     if (dashboardCards) {
       req.user.preferences.dashboardCards = [...new Set(dashboardCards)];
     }
     if (currency) req.user.preferences.currency = currency;
+    if (theme) req.user.preferences.theme = theme;
     await req.user.save();
     return res.json({ user: req.user.toSafeJSON(), message: 'Preferences saved.' });
   } catch (err) {

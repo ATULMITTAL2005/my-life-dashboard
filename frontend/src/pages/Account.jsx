@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { api } from '../lib/api';
 import { CURRENCIES, DASHBOARD_CARDS } from '../lib/constants';
+import { applyTheme } from '../lib/theme';
 import { formatDate } from '../lib/format';
 import {
   Avatar,
@@ -14,6 +15,7 @@ import {
   PageHeader,
   PasswordField,
   SectionHeader,
+  SegmentedControl,
   SelectField,
   Switch,
   TextField,
@@ -54,6 +56,7 @@ export default function Account() {
   const [savingProfile, setSavingProfile] = useState(false);
 
   const [currency, setCurrency] = useState('INR');
+  const [theme, setThemeState] = useState('light');
   const [cards, setCards] = useState([]);
   const [savingPrefs, setSavingPrefs] = useState(false);
 
@@ -66,6 +69,7 @@ export default function Account() {
     if (!user) return;
     setProfile({ name: user.name || '', email: user.email || '' });
     setCurrency(user.preferences?.currency || 'INR');
+    setThemeState(user.preferences?.theme || 'light');
     setCards(user.preferences?.dashboardCards || DASHBOARD_CARDS.map((card) => card.id));
   }, [user]);
 
@@ -119,9 +123,10 @@ export default function Account() {
     try {
       const response = await api('/auth/preferences', {
         method: 'PATCH',
-        body: { currency, dashboardCards: cards },
+        body: { currency, dashboardCards: cards, theme },
       });
       updateUser(response.user);
+      applyTheme(response.user.preferences?.theme || theme);
       toast.success('Preferences saved.');
     } catch (err) {
       toast.error(err.message);
@@ -247,6 +252,19 @@ export default function Account() {
               hint="Used across the dashboard, transactions, and budgets."
               className="prefs-currency"
             />
+
+            <div className="prefs-theme">
+              <p className="field__label">Theme</p>
+              <SegmentedControl
+                label="Theme"
+                value={theme}
+                onChange={setThemeState}
+                options={[
+                  { value: 'light', label: 'Light', icon: 'sun' },
+                  { value: 'dark', label: 'Dark', icon: 'moon' },
+                ]}
+              />
+            </div>
 
             <div className="prefs-cards">
               <p className="field__label">Dashboard summary cards</p>

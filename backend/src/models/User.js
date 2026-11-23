@@ -18,6 +18,11 @@ const preferencesSchema = new mongoose.Schema(
       enum: ['INR', 'USD', 'EUR', 'GBP'],
       default: 'INR',
     },
+    theme: {
+      type: String,
+      enum: ['light', 'dark'],
+      default: 'light',
+    },
   },
   { _id: false }
 );
@@ -59,6 +64,7 @@ userSchema.methods.toSafeJSON = function toSafeJSON() {
         ? this.preferences.dashboardCards
         : [...DASHBOARD_CARDS],
       currency: this.preferences?.currency || 'INR',
+      theme: this.preferences?.theme || 'light',
     },
     createdAt: this.createdAt,
   };
