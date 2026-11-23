@@ -7,33 +7,33 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
 
-  --page: #f6f2e9;
-  --page-2: #efe9dd;
-  --surface: #fffdf8;
-  --surface-2: #faf7f0;
-  --surface-3: #f2ede2;
-  --ink: #1d2a24;
-  --ink-2: #35443c;
-  --muted: #5f6a63;
-  --muted-2: #8b948d;
-  --line: #e4ded1;
-  --line-strong: #d5cdbd;
+  --page: #f5f1e8;
+  --page-2: #ede7dc;
+  --surface: #fdfbf6;
+  --surface-2: #f7f3ea;
+  --surface-3: #efe9dd;
+  --ink: #1a1f2e;
+  --ink-2: #2e3548;
+  --muted: #6b6f7a;
+  --muted-2: #8a8e98;
+  --line: #e3ddd0;
+  --line-strong: #d4ccb8;
 
-  --sage: #4f8f74;
-  --sage-deep: #2f6f5a;
-  --sage-soft: #e7f1eb;
-  --clay: #c06b4f;
-  --clay-soft: #f7e9e2;
-  --gold: #c1913f;
-  --gold-soft: #f7efdc;
-  --sky: #557c9b;
-  --sky-soft: #e8eff4;
-  --plum: #7c647d;
-  --plum-soft: #f0eaf1;
+  --sage: #1e3a5f;
+  --sage-deep: #152d4a;
+  --sage-soft: #e6eaf2;
+  --clay: #b86b5a;
+  --clay-soft: #f5e6e2;
+  --gold: #b8924a;
+  --gold-soft: #f5ecd8;
+  --sky: #5a7a9a;
+  --sky-soft: #e6ecf2;
+  --plum: #7a6b7a;
+  --plum-soft: #ece6ec;
   --danger: #b34a3c;
   --danger-soft: #f9e7e3;
-  --forest: #163a2f;
-  --forest-2: #1d4a3b;
+  --forest: #0b1a2e;
+  --forest-2: #1a2f4a;
 
   --chart-track: #ece6da;
   --chart-grid: #e8e1d4;
@@ -57,33 +57,33 @@
    ========================================================================== */
 
 :root[data-theme='dark'] {
-  --page: #0d1210;
-  --page-2: #121816;
-  --surface: #171f1b;
-  --surface-2: #1d2622;
-  --surface-3: #242e29;
-  --ink: #e6efe9;
-  --ink-2: #c9d8d0;
-  --muted: #9aa8a0;
-  --muted-2: #7a8780;
-  --line: #26322c;
-  --line-strong: #33423b;
+  --page: #0a0e1a;
+  --page-2: #0f1420;
+  --surface: #131926;
+  --surface-2: #181f2e;
+  --surface-3: #1e2636;
+  --ink: #e8eaf2;
+  --ink-2: #c9cde0;
+  --muted: #8a8fa8;
+  --muted-2: #6b7088;
+  --line: #252c3e;
+  --line-strong: #323a50;
 
-  --sage: #6fb394;
-  --sage-deep: #86c9a8;
-  --sage-soft: #1f3a2f;
-  --clay: #d48a70;
-  --clay-soft: #3a261f;
-  --gold: #d9ad5e;
-  --gold-soft: #3a301a;
-  --sky: #7aa1c0;
-  --sky-soft: #1f2d38;
-  --plum: #a68fa8;
-  --plum-soft: #2e2430;
+  --sage: #5a7fa8;
+  --sage-deep: #7a9fc8;
+  --sage-soft: #1a2538;
+  --clay: #c87a6a;
+  --clay-soft: #2e1f1c;
+  --gold: #d4a95a;
+  --gold-soft: #2e2615;
+  --sky: #7a9ab8;
+  --sky-soft: #1a2530;
+  --plum: #9a8a9a;
+  --plum-soft: #251f28;
   --danger: #d96b5c;
-  --danger-soft: #3a201c;
-  --forest: #0a1410;
-  --forest-2: #101c17;
+  --danger-soft: #2e1a18;
+  --forest: #060a14;
+  --forest-2: #0d1320;
 
   --chart-track: #26322c;
   --chart-grid: #222d27;
@@ -137,28 +137,28 @@
 }
 
 :root[data-theme='dark'] .avatar--sage {
-  color: #86c9a8;
-  background: #1f3a2f;
+  color: #7a9fc8;
+  background: #1a2538;
 }
 
 :root[data-theme='dark'] .avatar--gold {
-  color: #d9ad5e;
-  background: #3a301a;
+  color: #d4a95a;
+  background: #2e2615;
 }
 
 :root[data-theme='dark'] .avatar--sky {
-  color: #7aa1c0;
-  background: #1f2d38;
+  color: #7a9ab8;
+  background: #1a2530;
 }
 
 :root[data-theme='dark'] .avatar--clay {
-  color: #d48a70;
-  background: #3a261f;
+  color: #c87a6a;
+  background: #2e1f1c;
 }
 
 :root[data-theme='dark'] .avatar--plum {
-  color: #a68fa8;
-  background: #2e2430;
+  color: #9a8a9a;
+  background: #251f28;
 }
 
 *,

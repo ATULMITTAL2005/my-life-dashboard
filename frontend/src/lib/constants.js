@@ -166,4 +166,4 @@ export const CURRENCIES = [
   { value: 'GBP', label: 'British pound (£)' },
 ];
 
-export const CHART_COLORS = ['#4f8f74', '#c1913f', '#557c9b', '#c06b4f', '#7c647d', '#8a9a7b', '#a9a29a'];
+export const CHART_COLORS = ['#1e3a5f', '#b8924a', '#5a7a9a', '#b86b5a', '#7a6b7a', '#8a9a7b', '#a9a29a'];

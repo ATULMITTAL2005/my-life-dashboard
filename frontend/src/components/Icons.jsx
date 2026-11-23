@@ -270,10 +270,10 @@ export function BrandMark({ size = 36 }) {
       <rect width="40" height="40" rx="12" fill="#f4f0e6" />
       <path
         d="M11 28c0-9 5.5-14.5 17-15.5C27 23 21 29 11 29Z"
-        fill="#2f6f5a"
+        fill="#1e3a5f"
       />
       <path d="M13 30c2-6.5 6-11 12-14" stroke="#f4f0e6" strokeWidth="1.7" strokeLinecap="round" />
-      <circle cx="29" cy="11.5" r="2.4" fill="#c1913f" />
+      <circle cx="29" cy="11.5" r="2.4" fill="#b8924a" />
     </svg>
   );
 }
