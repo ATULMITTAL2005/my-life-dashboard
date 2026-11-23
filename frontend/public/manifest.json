@@ -1,0 +1,19 @@
+{
+  "name": "My Life Dashboard",
+  "short_name": "Life Dashboard",
+  "description": "A calm place for your money, work, tasks, and health.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f6f2e9",
+  "theme_color": "#163a2f",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

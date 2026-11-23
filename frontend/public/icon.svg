@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="My Life Dashboard">
+  <rect width="512" height="512" rx="112" fill="#f6f2e9" />
+  <path d="M128 352c0-108 68-178 212-192 0 132-84 204-212 204Z" fill="#2f6f5a" />
+  <path d="M156 380c24-84 76-140 156-180" stroke="#f6f2e9" stroke-width="14" stroke-linecap="round" fill="none" />
+  <circle cx="372" cy="136" r="30" fill="#c1913f" />
+</svg>
