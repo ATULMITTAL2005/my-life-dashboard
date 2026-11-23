@@ -4470,4 +4470,31 @@ legend {
   }
 }
 
+/* --------------------------------------------------------------------------
+   iOS / native safe areas (Capacitor)
+   -------------------------------------------------------------------------- */
+html,
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
 
+.app-shell {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+.mobile-header {
+  padding-top: env(safe-area-inset-top);
+}
+
+.toast-stack {
+  bottom: calc(20px + env(safe-area-inset-bottom));
+}
+
+.modal-overlay {
+  padding-top: calc(5vh + env(safe-area-inset-top));
+  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+}
